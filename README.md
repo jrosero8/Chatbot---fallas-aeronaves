@@ -1,4 +1,17 @@
-# Chatbot---fallas-aeronaves
+---
+
+**Maestría en Analítica de Datos**
+
+**Facultad de Ingeniería y Ciencias Básicas**
+
+**Universidad Central**
+
+---
+
+**INTEGRANTES:**
+
+- Hugo Ernesto Rodríguez Capera
+- Jhonny Stiwen Rosero Castro
 
 ## Introducción
 

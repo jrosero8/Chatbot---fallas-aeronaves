@@ -21,3 +21,6 @@ En la Facultad de Ingeniería y Ciencias Básicas de la Universidad Central se d
 * Instalación de RASA X (modo contenedores) en Ubuntu 20
 * Instalación de FastAPI en Ubuntu 18
 * Navegador actualizado
+
+## Demostración de uso
+

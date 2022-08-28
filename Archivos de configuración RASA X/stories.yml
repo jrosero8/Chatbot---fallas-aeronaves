@@ -1,0 +1,972 @@
+version: "2.0"
+stories:
+- story: Determinar_Sistemas_Flota
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_det_sistemas_criticos_flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Sistemas_Flota_Estadisticas
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_det_sistemas_criticos_flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Sistemas_Matricula_Estadisticas
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial_matricula
+  - slot_was_set:
+    - 2fecha_inicial_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final_matricula
+  - slot_was_set:
+    - 3fecha_final_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_det_sistemas_criticos_mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Frecuencia_Fallas_Matricula_Estadisticas
+  steps:
+  - intent: frecuenciaFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial_matricula
+  - slot_was_set:
+    - 2fecha_inicial_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final_matricula
+  - slot_was_set:
+    - 3fecha_final_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Frecuencia_Fallas_Flota_Estadisticas
+  steps:
+  - intent: frecuenciaFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Clasificar_FallasSimilaresMatricula_VerSolucion
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: clasificar_matricula_form
+  - active_loop: clasificar_matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_matricula
+  - slot_was_set:
+    - 1no_clasificar_matricula: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_matricula_form
+  - action: utter_slots_values_clasificar_matricula
+  - action: action_img_fallas_similaresMat_api
+  - action: utter_ask_ver_solucion
+  - intent: si
+  - action: action_img_fallas_similaresMat_Sol_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Clasificar_FallasSimilaresFlota_VerSolucion
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: clasificar_flota_form
+  - active_loop: clasificar_flota_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_flota
+  - slot_was_set:
+    - 1no_clasificar_flota: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_flota_form
+  - action: utter_slots_values_clasificar_flota
+  - action: action_img_fallas_similaresFlota_api
+  - action: utter_ask_ver_solucion
+  - intent: si
+  - action: action_img_fallas_similaresFlota_Sol_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Clasificar_FallasSimilaresMatricula_Sin_Sol
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: clasificar_matricula_form
+  - active_loop: clasificar_matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_matricula
+  - slot_was_set:
+    - 1no_clasificar_matricula: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_matricula_form
+  - action: utter_slots_values_clasificar_matricula
+  - action: action_img_fallas_similaresMat_api
+  - action: utter_ask_ver_solucion
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Clasificar_FallasSimilaresFlota_SinSol
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: clasificar_flota_form
+  - active_loop: clasificar_flota_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_flota
+  - slot_was_set:
+    - 1no_clasificar_flota: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_flota_form
+  - action: utter_slots_values_clasificar_flota
+  - action: action_img_fallas_similaresFlota_api
+  - action: utter_ask_ver_solucion
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: ClasificarReporte
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Sistemas_Matricula
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_det_sistemas_criticos_mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Frecuencia_Fallas_Flota
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Frecuencia_Fallas_Estadistica_Flota
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Frecuencia_Fallas_Estadistica_Matricula
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Frecuencia_Fallas_Matricula
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: no
+  - action: utter_despedida
+- story: Determinar_Sistemas_Flota_Ciclo
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_det_sistemas_criticos_flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Sistemas_Matricula_Ciclo
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_det_sistemas_criticos_mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Sistemas_Flota_Estadisticas_Ciclo
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_det_sistemas_criticos_flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Sistemas_Matricula_Estadisticas_Ciclo
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial_matricula
+  - slot_was_set:
+    - 2fecha_inicial_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final_matricula
+  - slot_was_set:
+    - 3fecha_final_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_det_sistemas_criticos_mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Frecuencia_Fallas_Matricula_Estadisticas_Ciclo
+  steps:
+  - intent: frecuenciaFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial_matricula
+  - slot_was_set:
+    - 2fecha_inicial_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final_matricula
+  - slot_was_set:
+    - 3fecha_final_matricula: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Frecuencia_Fallas_Flota_Estadisticas_Ciclo
+  steps:
+  - intent: frecuenciaFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Clasificar_FallasSimilaresMatricula_VerSolucion_Ciclo
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: clasificar_matricula_form
+  - active_loop: clasificar_matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_matricula
+  - slot_was_set:
+    - 1no_clasificar_matricula: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_matricula_form
+  - action: utter_slots_values_clasificar_matricula
+  - action: action_img_fallas_similaresMat_api
+  - action: utter_ask_ver_solucion
+  - intent: si
+  - action: action_img_fallas_similaresMat_Sol_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Clasificar_FallasSimilaresFlota_VerSolucion
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: clasificar_flota_form
+  - active_loop: clasificar_flota_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_flota
+  - slot_was_set:
+    - 1no_clasificar_flota: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_flota_form
+  - action: utter_slots_values_clasificar_flota
+  - action: action_img_fallas_similaresFlota_api
+  - action: utter_ask_ver_solucion
+  - intent: si
+  - action: action_img_fallas_similaresFlota_Sol_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Clasificar_FallasSimilaresMatricula_Sin_Sol_Ciclo
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: clasificar_matricula_form
+  - active_loop: clasificar_matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_matricula
+  - slot_was_set:
+    - 1no_clasificar_matricula: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_matricula_form
+  - action: utter_slots_values_clasificar_matricula
+  - action: action_img_fallas_similaresMat_api
+  - action: utter_ask_ver_solucion
+  - intent: no
+  - intent: utter_despedida
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Clasificar_FallasSimilaresFlota_SinSol_Ciclo
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: si
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: clasificar_flota_form
+  - active_loop: clasificar_flota_form7
+  - slot_was_set:
+    - requested_slot: 1no_clasificar_flota
+  - slot_was_set:
+    - 1no_clasificar_flota: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_flota_form
+  - action: utter_slots_values_clasificar_flota
+  - action: action_img_fallas_similaresFlota_api
+  - action: utter_ask_ver_solucion
+  - intent: no
+  - intent: utter_despedida
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: ClasificarReporte_Ciclo
+  steps:
+  - intent: clasificar
+  - action: clasificar_reporte_form
+  - active_loop: clasificar_reporte_form7
+  - slot_was_set:
+    - requested_slot: 1reporte
+  - slot_was_set:
+    - 1reporte: vincent
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_clasificar_reporte_form
+  - action: action_clasificar_reporte_api
+  - action: utter_ask_fallas_similares
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Sistemas_Matricula_Ciclo
+  steps:
+  - intent: determinarSistemas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_det_sistemas_criticos_mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Frecuencia_Fallas_Flota_Ciclo
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Frecuencia_Fallas_Estadistica_Flota_Ciclo
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: flota
+  - action: name_form
+  - active_loop: name_form7
+  - slot_was_set:
+    - requested_slot: 1no_flota
+  - slot_was_set:
+    - 1no_flota: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_name_form
+  - action: utter_slots_values
+  - action: action_frec_fallas_Flota_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Flota_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Frecuencia_Fallas_Estadistica_Matricula_Ciclo
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: si
+  - action: action_est_fallas_Mat_api
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Determinar_Frecuencia_Fallas_Matricula_Ciclo
+  steps:
+  - intent: determinarFrecFallas
+  - action: utter_ask_flota_mat
+  - intent: matricula
+  - action: matricula_form
+  - active_loop: matricula_form7
+  - slot_was_set:
+    - requested_slot: 1no_matricula
+  - slot_was_set:
+    - 1no_matricula: vincent
+  - slot_was_set:
+    - requested_slot: 2fecha_inicial
+  - slot_was_set:
+    - 2fecha_inicial: 25-10-2015
+  - slot_was_set:
+    - requested_slot: 3fecha_final
+  - slot_was_set:
+    - 3fecha_final: 25-10-2015
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: validate_matricula_form
+  - action: utter_slots_values_matricula
+  - action: action_frec_fallas_Mat_api
+  - action: utter_ask_ver_estadistica
+  - intent: no
+  - action: utter_ask_ayuda_adicional
+  - intent: si
+  - action: utter_ayudar_adicional
+- story: Saludar
+  steps:
+  - intent: saludar
+  - action: utter_saludar

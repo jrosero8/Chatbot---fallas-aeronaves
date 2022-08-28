@@ -1,0 +1,205 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- nlu_fallback
+- determinarSistemas
+- saludar
+- clasificar
+- reporte
+- matricula
+- si
+- flota
+- no
+- fechaInicial
+- NoFlota
+- NoMatricula
+- frecuenciaFallas
+- utter_despedida
+- determinarFrecFallas
+- utter_ask_ayuda_adicional
+- utter_ayudar_adicional
+slots:
+  1no_flota:
+    type: text
+    influence_conversation: true
+  2fecha_inicial:
+    type: text
+    influence_conversation: true
+  3fecha_final:
+    type: text
+    influence_conversation: true
+  1no_matricula:
+    type: text
+    influence_conversation: true
+  2fecha_inicial_matricula:
+    type: text
+    influence_conversation: true
+  3fecha_final_matricula:
+    type: text
+    influence_conversation: true
+  1no_clasificar_matricula:
+    type: text
+    influence_conversation: true
+  1no_clasificar_flota:
+    type: text
+    influence_conversation: true
+  1reporte:
+    type: text
+    influence_conversation: true
+  requested_slot:
+    type: unfeaturized
+    influence_conversation: false
+responses:
+  utter_ask_1no_flota:
+  - text: Por favor indica la flota que deseas consultar
+  utter_ask_fallas_similares:
+  - buttons:
+    - payload: si
+      title: Sí
+    - payload: no
+      title: No
+    text: Quieres buscar fallas similares?
+  utter_ask_flota_mat:
+  - buttons:
+    - payload: flota
+      title: Flota
+    - payload: matricula
+      title: Matrícula
+    text: 'Por:'
+  utter_ask_matricula:
+  - text: Por favor indica la matrícula que deseas consultar
+  utter_ask_ver_solucion:
+  - buttons:
+    - payload: si
+      title: Sí
+    - payload: no
+      title: No
+    text: ¿Deseas ver las soluciones para las anteriores fallas?
+  utter_saludar:
+  - buttons:
+    - payload: clasificar
+      title: Clasificar reporte
+    - payload: determinarSistemas
+      title: Determinar sistemas críticos
+    - payload: frecuenciaFallas
+      title: Frecuencia de fallas
+    text: Hola, soy FACbot, ¿en qué te puedo ayudar?
+  utter_clasificar_reporte:
+  - text: La clasificación del sistema es {sistema}
+  utter_ask_1reporte:
+  - text: Ingresa el reporte que deseas clasificar
+  utter_ask_2fecha_inicial:
+  - text: 'Indica la fecha inicial en formato dd-mm-yyyy (ejemplo: 25-10-2015)'
+  utter_ask_3fecha_final:
+  - text: 'Indique la fecha final en formato dd-mm-yyyy (ejemplo: 25-10-2015)'
+  utter_slots_values:
+  - text: 'Un momento por favor, estoy generando la gráfica con los siguientes valores:
+      {1no_flota}, fecha inicial: {2fecha_inicial} y fecha final: {3fecha_final}'
+  utter_ask_ver_estadistica:
+  - buttons:
+    - payload: si
+      title: Sí
+    - payload: no
+      title: No
+    text: Deseas ver datos estadísticos para estas fallas?
+  utter_ask_1no_matricula:
+  - text: Por favor indica la matrícula que deseas consultar
+  utter_ask_2fecha_inicial_matricula:
+  - text: 'Indica la fecha inicial en formato dd-mm-yyyy (ejemplo: 25-10-2015)'
+  utter_ask_3fecha_final_matricula:
+  - text: 'Indique la fecha final en formato dd-mm-yyyy (ejemplo: 25-10-2015)'
+  utter_slots_values_matricula:
+  - text: 'Un momento por favor, estoy generando la gráfica con los siguientes valores:
+      matrícula {1no_matricula}, fecha inicial: {2fecha_inicial_matricula} y fecha
+      final: {3fecha_final_matricula}'
+  utter_slots_values_clasificar_matricula:
+  - text: 'Un momento por favor, estoy generando la gráfica con los siguientes valores:
+      matrícula {1no_clasificar_matricula}'
+  utter_ask_1no_clasificar_matricula:
+  - text: Por favor indica la matrícula que deseas consultar
+  utter_ask_1no_clasificar_flota:
+  - text: Por favor indica la flota que deseas consultar
+  utter_slots_values_clasificar_flota:
+  - text: 'Un momento por favor, estoy generando la gráfica con los siguientes valores:
+      flota {1no_clasificar_flota}'
+  utter_slots_values_flota:
+  - text: 'Un momento por favor, estoy generando la gráfica con los siguientes valores:
+      flota {1no_flota}, fecha inicial: {2fecha_inicial} y fecha final: {3fecha_final}'
+  utter_despedida:
+  - text: Un placer servirte, hasta pronto.
+  - text: Espero haberte ayudado, adiós
+  - text: Espero verte pronto, chao.
+  utter_ask_ayuda_adicional:
+  - buttons:
+    - payload: si
+      title: Sí
+    - payload: no
+      title: No
+    text: ¿Te puedo ayudar en algo más?
+  utter_ayudar_adicional:
+  - buttons:
+    - payload: clasificar
+      title: Clasificar reporte
+    - payload: determinarSistemas
+      title: Determinar sistemas críticos
+    - payload: frecuenciaFallas
+      title: Frecuencia de fallas
+    text: ¿En qué te puedo ayudar?
+  utter_reingrese:
+  - text: Lo siento, no entiendo lo que me quieres decir. Por favor inténtalo de nuevo.
+actions:
+- action_clasificar_reporte_api
+- utter_clasificar_reporte
+- action_cost_prom_falla_api
+- utter_ask_fallas_similares
+- action_fallas_similares_api
+- action_img_fallas_similares_api
+- action_img_fallas_similaresMat_api
+- action_det_sistemas_criticos_api
+- action_img_fallas_similaresMat_Sol_api
+- action_img_fallas_similaresFlota_Sol_api
+- action_det_sistemas_criticos_flota_api
+- action_det_sistemas_criticos_flota2_api
+- utter_slots_values
+- utter_submit
+- validate_name_form
+- action_est_fallas_Flota_api
+- action_det_sistemas_criticos_mat_api
+- action_est_fallas_Mat_api
+- validate_matricula_form
+- action_frec_fallas_Flota_api
+- action_frec_fallas_Mat_api
+- validate_clasificar_matricula_form
+- action_img_fallas_similaresFlota_api
+- validate_clasificar_flota_form
+- validate_clasificar_reporte_form
+forms:
+  name_form:
+    required_slots:
+      1no_flota:
+      - type: from_text
+      2fecha_inicial:
+      - type: from_text
+      3fecha_final:
+      - type: from_text
+  matricula_form:
+    required_slots:
+      1no_matricula:
+      - type: from_text
+      2fecha_inicial_matricula:
+      - type: from_text
+      3fecha_final_matricula:
+      - type: from_text
+  clasificar_matricula_form:
+    required_slots:
+      1no_clasificar_matricula:
+      - type: from_text
+  clasificar_flota_form:
+    required_slots:
+      1no_clasificar_flota:
+      - type: from_text
+  clasificar_reporte_form:
+    required_slots:
+      1reporte:
+      - type: from_text
